@@ -1,0 +1,38 @@
+<ui:composition template="template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">
+		Trade Agreements List
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<p:dataTable var="tradeAgreement" value="#{tradeAgreementController.getAll()}"
+				emptyMessage="No trade agreements found">
+				<p:column headerText="Name">
+					<h:outputText value="#{tradeAgreement.name}" />
+				</p:column>
+				
+				<p:column headerText="Amount of Countries">
+					<h:outputText value="#{tradeAgreement.countries.size()}" />
+				</p:column>
+				
+				<p:column headerText="Actions" styleClass="column-actions">
+					<p:commandButton action="#{tradeAgreementController.goToUpdateView()}" ajax="false" update="messages" icon="fa fa-edit">
+						<f:setPropertyActionListener value="#{tradeAgreement.id}" target="#{tradeAgreementController.id}" />
+						<f:setPropertyActionListener value="#{tradeAgreement.name}" target="#{tradeAgreementController.name}" />
+						<f:setPropertyActionListener value="#{tradeAgreement.countries}" target="#{tradeAgreementController.countries}" />
+					</p:commandButton>
+					
+					<p:commandButton action="#{tradeAgreementController.delete()}" ajax="false" update="messages" icon="fa fa-trash">
+						<f:setPropertyActionListener value="#{tradeAgreement.id}" target="#{tradeAgreementController.id}" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>

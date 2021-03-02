@@ -1,0 +1,46 @@
+body {
+  
+}
+
+.header-h1 {
+  text-align: center;
+  color: #3e6384;
+}
+
+h1, h2, h3 {
+  font-family: cursive;
+}
+
+.menu-div {
+	background-color: lightblue;
+	border-radius: 15px;
+	display: table;
+	width: 100%;
+}
+
+.menu-div-h1 {
+	float: right;
+	width: 80%;
+}
+
+.menu-div-button {
+	float: left;
+	width: 10%;
+	margin: 25px;
+}
+
+.select-one-menu {
+	min-width: 200px;
+}
+
+.select-many-menu {
+	min-width: 220px;
+}
+
+.column-actions {
+	width:65px;
+}
+
+.button {
+	min-width: 130px;
+}

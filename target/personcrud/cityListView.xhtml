@@ -1,0 +1,38 @@
+<ui:composition template="template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">
+		City List
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<p:dataTable var="city" value="#{cityController.getAll()}"
+				emptyMessage="No cities found">
+				<p:column headerText="Name">
+					<h:outputText value="#{city.name}" />
+				</p:column>
+				
+				<p:column headerText="State">
+					<h:outputText value="#{city.state.name}" />
+				</p:column>
+				
+				<p:column headerText="Actions" styleClass="column-actions">
+					<p:commandButton action="#{cityController.goToUpdateView()}" ajax="false" update="messages" icon="fa fa-edit">
+						<f:setPropertyActionListener value="#{city.id}" target="#{cityController.id}" />
+						<f:setPropertyActionListener value="#{city.name}" target="#{cityController.name}" />
+						<f:setPropertyActionListener value="#{city.state}" target="#{cityController.state}" />
+					</p:commandButton>
+					
+					<p:commandButton action="#{cityController.delete()}" ajax="false" update="messages" icon="fa fa-trash">
+						<f:setPropertyActionListener value="#{city.id}" target="#{cityController.id}" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>

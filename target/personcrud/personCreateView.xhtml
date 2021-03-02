@@ -1,0 +1,32 @@
+<ui:composition template="template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">
+		Create a New Person
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<h3>Name</h3>
+			<p:inputText value="#{personController.name}" />
+
+			<h3>CPF</h3>
+			<p:inputText value="#{personController.cpf}" />
+
+			<h3>Height</h3>
+			<p:inputNumber value="#{personController.height}" />
+			
+			<h3>Born Date</h3>
+			<p:calendar value="#{personController.bornDate}" />
+			
+			<br/><br/>
+
+			<p:commandButton styleClass="button" value="Add" action="#{personController.save()}"
+				ajax="false" />
+		</h:form>
+	</ui:define>
+</ui:composition>
