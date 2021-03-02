@@ -17,9 +17,11 @@ public class Country implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	@Column(nullable = false)
-	private String name;
-	@ManyToMany(mappedBy = "countries")
-	private List<TradeAgreement> tradeAgreements;
+	private String nameInPortuguese;
+	@Column(nullable = false)
+	private String nameInEnglish;
+	@Column(nullable = false)
+	private String acronym;
 	
 	public Long getId() {
 		return id;
@@ -27,18 +29,25 @@ public class Country implements Serializable{
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public String getNameInPortuguese() {
+		return nameInPortuguese;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setNameInPortuguese(String nameInPortuguese) {
+		this.nameInPortuguese = nameInPortuguese;
 	}
-	public List<TradeAgreement> getTradeAgreements() {
-		return tradeAgreements;
+	public String getNameInEnglish() {
+		return nameInEnglish;
 	}
-	public void setTradeAgreements(List<TradeAgreement> tradeAgreements) {
-		this.tradeAgreements = tradeAgreements;
+	public void setNameInEnglish(String nameInEnglish) {
+		this.nameInEnglish = nameInEnglish;
 	}
+	public String getAcronym() {
+		return acronym;
+	}
+	public void setAcronym(String acronym) {
+		this.acronym = acronym;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
