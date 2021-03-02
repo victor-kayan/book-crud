@@ -14,17 +14,6 @@ public class CountryService {
 	@Autowired
 	private CountryDAO stateDAO;
 	
-	public void save(Country country) {				
-		stateDAO.save(country);
-	}
-	
-	public void update(Country country) {		
-		stateDAO.update(country);
-	}
-	
-	public void delete(long id) {
-		stateDAO.delete(id);
-	}
 	
 	public List getAll() {
 		return stateDAO.getAll();

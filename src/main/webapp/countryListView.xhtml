@@ -14,11 +14,11 @@
 			<p:dataTable var="country" value="#{countryController.getAll()}"
 				emptyMessage="No countries found">
 				<p:column headerText="Name">
-					<h:outputText value="#{country.name}" />
+					<h:outputText value="#{country.nameInPortuguese}" />
 				</p:column>
 				
 				<p:column headerText="Amount of Trade Agreements">
-					<h:outputText value="#{country.tradeAgreements.size()}" />
+					<h:outputText value="#{country.acronym}" />
 				</p:column>
 				
 				<p:column headerText="Actions" styleClass="column-actions">
