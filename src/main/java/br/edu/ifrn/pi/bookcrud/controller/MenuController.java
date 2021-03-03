@@ -20,14 +20,14 @@ public class MenuController extends AbstractController{
 		return "personCreateView";
 	}
 	
-	public String getCountryListView() {
-		addInfoMessage("List", "List of Country");
-		return "countryListView";
+	public String getBookListView() {
+		addInfoMessage("Listar", "Listar livros");
+		return "/book/listView";
 	}
 	
-	public String getCountryCreateView() {
-		addInfoMessage("Create", "Create a new Country");
-		return "countryCreateView";
+	public String getBookCreateView() {
+		addInfoMessage("Cadastrar", "Cadastrar novo livro");
+		return "/book/createView";
 	}
 	
 	public String getStateListView() {

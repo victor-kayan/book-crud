@@ -1,0 +1,42 @@
+<ui:composition template="../template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+<h:head>
+	<link rel="stylesheet" href="../styles.css" />
+</h:head>
+
+	<ui:define name="title">
+		Novo Livro
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<h3>Título</h3>
+			<p:inputText value="#{bookController.title}" class="form-complete"/>
+			
+			<h3>Editora</h3>
+			<p:inputText value="#{bookController.company}" class="form-complete"/>
+
+			<h3>Ano de lançamento</h3>
+			<p:calendar value="#{bookController.releaseYear}" yearRange="100:c" navigator="true" />
+
+			<h3>Número de páginas</h3>
+			<p:inputText value="#{bookController.numberOfPages}" class="form-complete"/>
+
+			<h3>Autor</h3>
+			<p:selectOneMenu value="#{bookController.author}" class="select-one-menu">
+				<f:selectItem noSelectionOption="true" />
+	            <f:selectItems value="#{authorController.getAll()}" var="author" itemLabel="#{author.name}" itemValue="#{author}" />
+	        </p:selectOneMenu>
+			
+			<br/><br/>
+
+			<p:commandButton styleClass="button" value="CADASTRAR LIVRO" action="#{bookController.save()}"
+				ajax="false" class="form-complete"/>
+		</h:form>
+	</ui:define>
+</ui:composition>

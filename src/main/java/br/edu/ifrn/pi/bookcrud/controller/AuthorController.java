@@ -26,7 +26,7 @@ public class AuthorController extends AbstractController{
 	private ValidationService validationService;
 	
 	public String save() {
-		if (validationService.validateNameWithoutNumber(name)) {
+		if (validationService.validateName(name)) {
 			if (validationService.validateCpf(cpf)) {
 				Author author = new Author(name, cpf, bornDate, nationality);
 				
@@ -46,7 +46,7 @@ public class AuthorController extends AbstractController{
 	}
 	
 	public String update() {
-		if(validationService.validateNameWithoutNumber(name)) {
+		if(validationService.validateName(name)) {
 			if (validationService.validateCpf(cpf)) {
 				Author author = new Author(id, name, cpf, bornDate, nationality);
 				

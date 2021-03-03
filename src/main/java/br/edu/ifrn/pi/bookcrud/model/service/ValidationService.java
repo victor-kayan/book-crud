@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ValidationService {
 	
-	public boolean validateNameWithoutNumber(String name) {
+	public boolean validateName(String name) {
 	    if (name != null && !name.trim().isEmpty()) {
 			char[] nameCharsArray = name.toCharArray();
 		    
@@ -16,11 +16,10 @@ public class ValidationService {
 		    }    
 		    return true;
 	    }
-	    
     	return false; 
 	}
 	
-	public boolean validateName(String name) {
+	public boolean validateTitle(String name) {
 		return name != null && !name.trim().isEmpty();
     }
 	
@@ -29,5 +28,9 @@ public class ValidationService {
 		String cpfDigitsOnly = cpfWithoutDots.replace("-", "");
 		
 		return cpf.matches("^\\d{11}$");
+	}
+	
+	public boolean validateNumberOfPages(int number) {
+		return number >= 1 && number <= 10000;
 	}
 }
