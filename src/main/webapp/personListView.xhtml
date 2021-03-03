@@ -6,14 +6,14 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="title">
-		Person List
+		Lista de escritores
 	</ui:define>
 
 	<ui:define name="content">
 		<h:form>
 			<p:dataTable var="person" value="#{personController.getAll()}"
-				emptyMessage="No persons found">
-				<p:column headerText="Name">
+				emptyMessage="Nenhum escritor foi cadastrado ainda.">
+				<p:column headerText="Nome">
 					<h:outputText value="#{person.name}" />
 				</p:column>
 				
@@ -21,15 +21,15 @@
 					<h:outputText value="#{person.cpf}" />
 				</p:column>
 				
-				<p:column headerText="Height">
+				<p:column headerText="Nacionalidade">
 					<h:outputText value="#{person.height}" />
 				</p:column>
 				
-				<p:column headerText="Born Date">
+				<p:column headerText="Data de nascimento">
 					<h:outputText value="#{person.bornDate}" />
 				</p:column>
 				
-				<p:column headerText="Actions" styleClass="column-actions">
+				<p:column headerText="Ações" styleClass="column-actions">
 					<p:commandButton action="#{personController.goToUpdateView()}" ajax="false" update="messages" icon="fa fa-edit">
 						<f:setPropertyActionListener value="#{person.id}" target="#{personController.id}" />
 						<f:setPropertyActionListener value="#{person.name}" target="#{personController.name}" />

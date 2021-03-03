@@ -4,20 +4,34 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
+	
+<h:head>
+	<link rel="stylesheet" href="styles.css" />
+</h:head>
 
 	<ui:define name="title">
-		Create a New Country
+		Novo Livro
 	</ui:define>
 
 	<ui:define name="content">
 		<h:form>
-			<h3>Name</h3>
-			<p:inputText value="#{countryController.name}" />
+			<h3>Título</h3>
+			<p:inputText value="#{countryController.name}" class="form-complete"/>
+			<h3>Autor</h3>
+			<p:inputText value="#{countryController.name}" class="form-complete"/>
+			<h3>Editora</h3>
+			<p:inputText value="#{countryController.name}" class="form-complete"/>
+			<h3>Ano de lançamento</h3>
+			<p:inputText value="#{countryController.name}" class="form-complete"/>
+			<h3>Número de páginas</h3>
+			<p:inputText value="#{countryController.name}" class="form-complete"/>
+			<h3>Edição</h3>
+			<p:inputText value="#{countryController.name}" class="form-complete"/>
 			
 			<br/><br/>
 
-			<p:commandButton styleClass="button" value="Add" action="#{countryController.save()}"
-				ajax="false" />
+			<p:commandButton styleClass="button" value="CADASTRAR LIVRO" action="#{countryController.save()}"
+				ajax="false" class="form-complete"/>
 		</h:form>
 	</ui:define>
 </ui:composition>

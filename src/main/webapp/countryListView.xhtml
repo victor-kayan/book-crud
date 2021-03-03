@@ -6,22 +6,34 @@
 	xmlns:p="http://primefaces.org/ui">
 
 	<ui:define name="title">
-		Country List
+		Livros cadastrados
 	</ui:define>
 
 	<ui:define name="content">
 		<h:form>
 			<p:dataTable var="country" value="#{countryController.getAll()}"
-				emptyMessage="No countries found">
-				<p:column headerText="Name">
+				emptyMessage="Nenhum livro foi cadastrado ainda.">
+				<p:column headerText="Título">
 					<h:outputText value="#{country.name}" />
 				</p:column>
 				
-				<p:column headerText="Amount of Trade Agreements">
+				<p:column headerText="Autor">
 					<h:outputText value="#{country.tradeAgreements.size()}" />
 				</p:column>
 				
-				<p:column headerText="Actions" styleClass="column-actions">
+				<p:column headerText="Editora">
+					<h:outputText value="#{country.tradeAgreements.size()}" />
+				</p:column>
+				
+				<p:column headerText="Número de páginas">
+					<h:outputText value="#{country.tradeAgreements.size()}" />
+				</p:column>
+				
+				<p:column headerText="Edição">
+					<h:outputText value="#{country.tradeAgreements.size()}" />
+				</p:column>
+				
+				<p:column headerText="Ações" styleClass="column-actions">
 					<p:commandButton action="#{countryController.goToUpdateView()}" ajax="false" update="messages" icon="fa fa-edit">
 						<f:setPropertyActionListener value="#{country.id}" target="#{countryController.id}" />
 						<f:setPropertyActionListener value="#{country.name}" target="#{countryController.name}" />
