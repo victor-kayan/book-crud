@@ -6,18 +6,18 @@ import org.springframework.stereotype.Controller;
 public class MenuController extends AbstractController{
 
 	public String getHome() {
-		addInfoMessage("Home", "Home");
-		return "index";
+		addInfoMessage("Home", "Tela incial");
+		return "/index.xhtml";
 	}
 	
-	public String getPersonListView() {
-		addInfoMessage("List", "List of people");
-		return "personListView";
+	public String getAuthorListView() {
+		addInfoMessage("Listar", "Listar escritores");
+		return "/author/listView";
 	}
 	
-	public String getPersonCreateView() {
-		addInfoMessage("Create", "Create a new person");
-		return "personCreateView";
+	public String getAuthorCreateView() {
+		addInfoMessage("Create", "Cadastrar novo escritor");
+		return "/author/createView";
 	}
 	
 	public String getBookListView() {
@@ -28,36 +28,6 @@ public class MenuController extends AbstractController{
 	public String getBookCreateView() {
 		addInfoMessage("Cadastrar", "Cadastrar novo livro");
 		return "/book/createView";
-	}
-	
-	public String getStateListView() {
-		addInfoMessage("List", "List of State");
-		return "stateListView";
-	}
-	
-	public String getStateCreateView() {
-		addInfoMessage("Create", "Create a new state");
-		return "stateCreateView";
-	}
-	
-	public String getCityListView() {
-		addInfoMessage("List", "List of City");
-		return "cityListView";
-	}
-	
-	public String getCityCreateView() {
-		addInfoMessage("Create", "Create a new city");
-		return "cityCreateView";
-	}
-	
-	public String getTradeAgreementListView() {
-		addInfoMessage("List", "List of Trade Agreements");
-		return "tradeAgreementListView";
-	}
-	
-	public String getTradeAgreementCreateView() {
-		addInfoMessage("Create", "Create a new Trade Agreement");
-		return "tradeAgreementCreateView";
 	}
 	
 }

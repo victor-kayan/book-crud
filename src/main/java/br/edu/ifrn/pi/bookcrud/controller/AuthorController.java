@@ -80,15 +80,15 @@ public class AuthorController extends AbstractController{
 	}
 	
 	public String goToCreateView() {
-		return "stateCreateView"; // OBS
+		return "/author/createView";
 	}
 	
 	public String goToUpdateView() {
-		return "/test/authorUpdateView"; // OBS
+		return "/author/updateView";
 	}
 	
 	public String goToListView() {
-		return "/test/authorListView"; // OBS
+		return "/author/listView";
 	}
 
 	public Long getId() {
