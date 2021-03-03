@@ -8,21 +8,49 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class Person implements Serializable{
+public class Author implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
 	@Column(nullable = false)
 	private String name;
+	
 	private String cpf;
-	private int height;
+	
 	@Temporal(TemporalType.DATE)
 	private Date bornDate;
+	
+	@ManyToOne
+	private Country nationality;
+	
+	public Author(String name, String cpf, Date bornDate, Country nationality) {
+		super();
+		this.name = name;
+		this.cpf = cpf;
+		this.bornDate = bornDate;
+		this.nationality = nationality;
+	}
+	
+	public Author(Long id, String name, String cpf, Date bornDate, Country nationality) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.cpf = cpf;
+		this.bornDate = bornDate;
+		this.nationality = nationality;
+	}
+	
+	public Author() {
+		super();
+	}
 	
 	public Long getId() {
 		return id;
@@ -42,18 +70,19 @@ public class Person implements Serializable{
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	public int getHeight() {
-		return height;
-	}
-	public void setHeight(int height) {
-		this.height = height;
-	}
 	public Date getBornDate() {
 		return bornDate;
 	}
 	public void setBornDate(Date bornDate) {
 		this.bornDate = bornDate;
 	}
+	public Country getNationality() {
+		return nationality;
+	}
+	public void setNationality(Country nationality) {
+		this.nationality = nationality;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -61,6 +90,7 @@ public class Person implements Serializable{
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -69,7 +99,7 @@ public class Person implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Person other = (Person) obj;
+		Author other = (Author) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -77,4 +107,5 @@ public class Person implements Serializable{
 			return false;
 		return true;
 	}
+	
 }

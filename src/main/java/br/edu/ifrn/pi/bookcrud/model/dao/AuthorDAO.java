@@ -4,33 +4,31 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Query;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import br.edu.ifrn.pi.bookcrud.model.entity.Person;
-import br.edu.ifrn.pi.bookcrud.model.entity.State;
+import br.edu.ifrn.pi.bookcrud.model.entity.Author;
 
 @Repository
-public class PersonDAO {
+public class AuthorDAO {
 
 	@Autowired
 	private EntityManagerFactory entityManagerFactory;
 
-	public void save(Person person) {
+	public void save(Author author) {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 
 		entityManager.getTransaction().begin();
-		entityManager.persist(person);
+		entityManager.persist(author);
 		entityManager.getTransaction().commit();
 	}
 
-	public void update(Person person) {
+	public void update(Author author) {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 
 		entityManager.getTransaction().begin();
-		entityManager.merge(person);
+		entityManager.merge(author);
 		entityManager.getTransaction().commit();
 	}
 
@@ -39,17 +37,17 @@ public class PersonDAO {
 
 		entityManager.getTransaction().begin();
 		
-		Person person = entityManager.find(Person.class, id);
-		entityManager.remove(person);
+		Author author = entityManager.find(Author.class, id);
+		entityManager.remove(author);
 		
 		entityManager.getTransaction().commit();
 	}
 
 	public List getAll() {
-		return entityManagerFactory.createEntityManager().createQuery("from Person").getResultList();
+		return entityManagerFactory.createEntityManager().createQuery("from Author").getResultList();
 	}
 
-	public Person getById(long id) {
-		return entityManagerFactory.createEntityManager().find(Person.class, id);
+	public Author getById(long id) {
+		return entityManagerFactory.createEntityManager().find(Author.class, id);
 	}
 }

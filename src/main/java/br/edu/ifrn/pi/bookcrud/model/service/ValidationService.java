@@ -4,21 +4,23 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ValidationService {
-
-	public boolean validateHeight(int height) {
-		if(height > 0 && height < 200) {
-			return true;
-		}else {
-			return false;
-		}
+	
+	public boolean validateNameWithoutNumber(String name) {
+	    if (name != null && !name.trim().isEmpty()) {
+			char[] nameCharsArray = name.toCharArray();
+		    
+		    for (char eachNameChar : nameCharsArray) {
+		    	if (Character.isDigit(eachNameChar)) {
+		    		return false;
+		         }
+		    }    
+		    return true;
+	    }
+	    
+    	return false; 
 	}
 	
 	public boolean validateName(String name) {
-		if(name != null && !name.trim().isEmpty() && !name.contains("1")){
-			return true;
-		}
-		
-		return false;
-	}
-	
+		return name != null && !name.trim().isEmpty();
+    }
 }

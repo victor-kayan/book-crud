@@ -1,0 +1,35 @@
+<ui:composition template="template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">
+		Create a New State
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<h3>Name</h3>
+			<p:inputText value="#{authorController.name}" />
+			
+			<h3>CPF</h3>
+			<p:inputNumber value="#{authorController.cpf}" />
+			
+			<h3>Born Date</h3>
+			<p:calendar value="#{authorController.bornDate}" />
+			
+			<h3>Nacionalidade</h3>
+			<p:selectOneMenu value="#{authorController.nationality}" class="select-one-menu">
+				<f:selectItem noSelectionOption="true" />
+	            <f:selectItems value="#{countryController.getAll()}" var="country" itemLabel="#{country.nameInPortuguese}" itemValue="#{country}" />
+	        </p:selectOneMenu>
+			
+			<br/><br/>
+
+			<p:commandButton styleClass="button" value="Add" action="#{authorController.save()}"
+				ajax="false" />
+		</h:form>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,48 @@
+<ui:composition template="template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="title">
+		State List
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<p:dataTable var="author" value="#{authorController.getAll()}"
+				emptyMessage="No authors found">
+				<p:column headerText="Name">
+					<h:outputText value="#{author.name}" />
+				</p:column>
+				
+				<p:column headerText="CPF">
+					<h:outputText value="#{author.cpf}" />
+				</p:column>
+				
+				<p:column headerText="Born Date">
+					<h:outputText value="#{author.bornDate}" />
+				</p:column>
+				
+				<p:column headerText="Nacionalidade">
+					<h:outputText value="#{author.nationality.acronym}" />
+				</p:column>
+				
+				<p:column headerText="Actions" styleClass="column-actions">
+					<p:commandButton action="#{authorController.goToUpdateView()}" ajax="false" update="messages" icon="fa fa-edit">
+						<f:setPropertyActionListener value="#{author.id}" target="#{authorController.id}" />
+						<f:setPropertyActionListener value="#{author.name}" target="#{authorController.name}" />
+						<f:setPropertyActionListener value="#{author.cpf}" target="#{authorController.cpf}" />
+						<f:setPropertyActionListener value="#{author.bornDate}" target="#{authorController.bornDate}" />
+						<f:setPropertyActionListener value="#{author.nationality}" target="#{authorController.nationality}" />
+					</p:commandButton>
+					
+					<p:commandButton action="#{authorController.delete()}" ajax="false" update="messages" icon="fa fa-trash">
+						<f:setPropertyActionListener value="#{author.id}" target="#{authorController.id}" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
