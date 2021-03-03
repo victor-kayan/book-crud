@@ -8,27 +8,27 @@ import javax.persistence.EntityManagerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import br.edu.ifrn.pi.bookcrud.model.entity.TradeAgreement;
+import br.edu.ifrn.pi.bookcrud.model.entity.Author;
 
 @Repository
-public class TradeAgreementDAO {
+public class AuthorDAO {
 
 	@Autowired
 	private EntityManagerFactory entityManagerFactory;
 
-	public void save(TradeAgreement tradeAgreement) {
+	public void save(Author author) {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 
 		entityManager.getTransaction().begin();
-		entityManager.persist(tradeAgreement);
+		entityManager.persist(author);
 		entityManager.getTransaction().commit();
 	}
 
-	public void update(TradeAgreement tradeAgreement) {
+	public void update(Author author) {
 		EntityManager entityManager = entityManagerFactory.createEntityManager();
 
 		entityManager.getTransaction().begin();
-		entityManager.merge(tradeAgreement);
+		entityManager.merge(author);
 		entityManager.getTransaction().commit();
 	}
 
@@ -37,17 +37,17 @@ public class TradeAgreementDAO {
 
 		entityManager.getTransaction().begin();
 		
-		TradeAgreement tradeAgreement = entityManager.find(TradeAgreement.class, id);
-		entityManager.remove(tradeAgreement);
+		Author author = entityManager.find(Author.class, id);
+		entityManager.remove(author);
 		
 		entityManager.getTransaction().commit();
 	}
 
 	public List getAll() {
-		return entityManagerFactory.createEntityManager().createQuery("from TradeAgreement").getResultList();
+		return entityManagerFactory.createEntityManager().createQuery("from Author").getResultList();
 	}
 
-	public TradeAgreement getById(long id) {
-		return entityManagerFactory.createEntityManager().find(TradeAgreement.class, id);
+	public Author getById(long id) {
+		return entityManagerFactory.createEntityManager().find(Author.class, id);
 	}
 }
