@@ -87,7 +87,7 @@ public class BookController extends AbstractController{
 	}
 	
 	public String goToCreateView() {
-		return "/book/createView";
+		return "bookCreateView";
 	}
 	
 	public String goToUpdateView() {
@@ -95,7 +95,7 @@ public class BookController extends AbstractController{
 	}
 	
 	public String goToListView() {
-		return "/book/listView";
+		return "bookListView";
 	}
 
 	public Long getId() {
