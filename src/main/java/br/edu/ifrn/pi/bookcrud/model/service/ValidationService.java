@@ -23,4 +23,11 @@ public class ValidationService {
 	public boolean validateName(String name) {
 		return name != null && !name.trim().isEmpty();
     }
+	
+	public boolean validateCpf(String cpf) {
+		String cpfWithoutDots = cpf.replace(".", "");
+		String cpfDigitsOnly = cpfWithoutDots.replace("-", "");
+		
+		return cpf.matches("^\\d{11}$");
+	}
 }

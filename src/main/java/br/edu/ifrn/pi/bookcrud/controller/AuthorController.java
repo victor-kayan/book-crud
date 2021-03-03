@@ -26,31 +26,41 @@ public class AuthorController extends AbstractController{
 	private ValidationService validationService;
 	
 	public String save() {
-		if (validationService.validateNameWithoutNumber(name)) {		
-			Author author = new Author(name, cpf, bornDate, nationality);
-			
-			authorService.save(author);
-			
-			addInfoMessage("Salvo com sucesso!", String.format("O autor %s foi cadastrado", name));
-			
-			return goToListView();
+		if (validationService.validateNameWithoutNumber(name)) {
+			if (validationService.validateCpf(cpf)) {
+				Author author = new Author(name, cpf, bornDate, nationality);
+				
+				authorService.save(author);
+				
+				addInfoMessage("Salvo com sucesso!", String.format("O autor %s foi cadastrado", name));
+				
+				return goToListView();
+			} else {
+				addErrorMessage("O CPF inserido é inválido", "Erro ao cadastrar autor");
+				return "";
+			}
 		} else {
-			addErrorMessage("Erro ao cadastrar autor", "O nome inserido é inválido");
+			addErrorMessage("O nome inserido é inválido", "Erro ao cadastrar autor");
 			return "";
 		}
 	}
 	
 	public String update() {
-		if(validationService.validateNameWithoutNumber(name)) {		
-			Author author = new Author(id, name, cpf, bornDate, nationality);
-			
-			authorService.update(author);
-			
-			addInfoMessage("Atualizado com sucesso!", String.format("Autor %s atualizado", name));
-			
-			return goToListView();
+		if(validationService.validateNameWithoutNumber(name)) {
+			if (validationService.validateCpf(cpf)) {
+				Author author = new Author(id, name, cpf, bornDate, nationality);
+				
+				authorService.update(author);
+				
+				addInfoMessage("Atualizado com sucesso!", String.format("Autor %s atualizado", name));
+				
+				return goToListView();
+			} else {
+				addErrorMessage("O CPF inserido é inválido", "Erro ao atualizar autor");
+				return "";
+			}
 		} else {
-			addErrorMessage("Erro ao atualizar autor", "O nome inserido é inválido");
+			addErrorMessage("O nome inserido é inválido", "Erro ao atualizar autor");
 			return "";
 		}
 	}
