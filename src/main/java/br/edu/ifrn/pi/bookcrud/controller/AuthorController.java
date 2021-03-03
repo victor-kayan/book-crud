@@ -80,15 +80,15 @@ public class AuthorController extends AbstractController{
 	}
 	
 	public String goToCreateView() {
-		return "/author/createView";
+		return "authorCreateView";
 	}
 	
 	public String goToUpdateView() {
-		return "/author/updateView";
+		return "authorUpdateView";
 	}
 	
 	public String goToListView() {
-		return "/author/listView";
+		return "authorListView";
 	}
 
 	public Long getId() {

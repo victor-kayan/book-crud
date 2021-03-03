@@ -91,7 +91,7 @@ public class BookController extends AbstractController{
 	}
 	
 	public String goToUpdateView() {
-		return "/book/updateView";
+		return "bookUpdateView";
 	}
 	
 	public String goToListView() {

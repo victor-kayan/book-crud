@@ -12,22 +12,22 @@ public class MenuController extends AbstractController{
 	
 	public String getAuthorListView() {
 		addInfoMessage("Listar", "Listar escritores");
-		return "/author/listView";
+		return "authorListView";
 	}
 	
 	public String getAuthorCreateView() {
 		addInfoMessage("Create", "Cadastrar novo escritor");
-		return "/author/createView";
+		return "authorCreateView";
 	}
 	
 	public String getBookListView() {
 		addInfoMessage("Listar", "Listar livros");
-		return "/book/listView";
+		return "bookListView";
 	}
 	
 	public String getBookCreateView() {
 		addInfoMessage("Cadastrar", "Cadastrar novo livro");
-		return "/book/createView";
+		return "bookCreateView";
 	}
 	
 }
